@@ -50,23 +50,28 @@
             // 
             // rtb_import
             // 
+            this.rtb_import.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.rtb_import.DetectUrls = false;
-            this.rtb_import.Location = new System.Drawing.Point(12, 95);
+            this.rtb_import.ForeColor = System.Drawing.SystemColors.Window;
+            this.rtb_import.Location = new System.Drawing.Point(0, 95);
             this.rtb_import.Name = "rtb_import";
             this.rtb_import.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
-            this.rtb_import.Size = new System.Drawing.Size(609, 354);
+            this.rtb_import.Size = new System.Drawing.Size(656, 356);
             this.rtb_import.TabIndex = 0;
             this.rtb_import.Text = "";
             this.rtb_import.WordWrap = false;
             // 
             // btn_import
             // 
+            this.btn_import.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btn_import.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_import.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_import.Location = new System.Drawing.Point(12, 12);
             this.btn_import.Name = "btn_import";
             this.btn_import.Size = new System.Drawing.Size(609, 54);
             this.btn_import.TabIndex = 1;
             this.btn_import.Text = "Import";
-            this.btn_import.UseVisualStyleBackColor = true;
+            this.btn_import.UseVisualStyleBackColor = false;
             this.btn_import.Click += new System.EventHandler(this.btn_import_Click);
             // 
             // lbl_import_prompt
@@ -80,32 +85,41 @@
             // 
             // btn_a_post
             // 
+            this.btn_a_post.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btn_a_post.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_a_post.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_a_post.Location = new System.Drawing.Point(12, 310);
             this.btn_a_post.Name = "btn_a_post";
             this.btn_a_post.Size = new System.Drawing.Size(200, 117);
             this.btn_a_post.TabIndex = 3;
             this.btn_a_post.Text = "Already posted";
-            this.btn_a_post.UseVisualStyleBackColor = true;
+            this.btn_a_post.UseVisualStyleBackColor = false;
             this.btn_a_post.Click += new System.EventHandler(this.btn_a_post_Click);
             // 
             // btn_n_post
             // 
+            this.btn_n_post.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btn_n_post.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_n_post.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_n_post.Location = new System.Drawing.Point(421, 310);
             this.btn_n_post.Name = "btn_n_post";
             this.btn_n_post.Size = new System.Drawing.Size(200, 117);
             this.btn_n_post.TabIndex = 4;
             this.btn_n_post.Text = "Post failed or pending";
-            this.btn_n_post.UseVisualStyleBackColor = true;
+            this.btn_n_post.UseVisualStyleBackColor = false;
             this.btn_n_post.Click += new System.EventHandler(this.btn_n_post_Click);
             // 
             // btn_f_post
             // 
+            this.btn_f_post.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btn_f_post.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_f_post.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_f_post.Location = new System.Drawing.Point(216, 310);
             this.btn_f_post.Name = "btn_f_post";
             this.btn_f_post.Size = new System.Drawing.Size(200, 117);
             this.btn_f_post.TabIndex = 5;
             this.btn_f_post.Text = "Force posted";
-            this.btn_f_post.UseVisualStyleBackColor = true;
+            this.btn_f_post.UseVisualStyleBackColor = false;
             this.btn_f_post.Click += new System.EventHandler(this.btn_f_post_Click);
             // 
             // lbl_site
@@ -140,32 +154,41 @@
             // 
             // btn_back
             // 
-            this.btn_back.Location = new System.Drawing.Point(492, 156);
+            this.btn_back.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btn_back.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_back.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_back.Location = new System.Drawing.Point(488, 156);
             this.btn_back.Name = "btn_back";
             this.btn_back.Size = new System.Drawing.Size(42, 24);
             this.btn_back.TabIndex = 9;
             this.btn_back.Text = "<";
-            this.btn_back.UseVisualStyleBackColor = true;
+            this.btn_back.UseVisualStyleBackColor = false;
             this.btn_back.Click += new System.EventHandler(this.btn_back_Click);
             // 
             // btn_export
             // 
+            this.btn_export.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btn_export.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_export.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_export.Location = new System.Drawing.Point(12, 12);
             this.btn_export.Name = "btn_export";
             this.btn_export.Size = new System.Drawing.Size(301, 54);
             this.btn_export.TabIndex = 10;
             this.btn_export.Text = "Export SNOW import list";
-            this.btn_export.UseVisualStyleBackColor = true;
+            this.btn_export.UseVisualStyleBackColor = false;
             this.btn_export.Click += new System.EventHandler(this.btn_export_Click);
             // 
             // btn_export_status
             // 
+            this.btn_export_status.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btn_export_status.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_export_status.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_export_status.Location = new System.Drawing.Point(321, 12);
             this.btn_export_status.Name = "btn_export_status";
             this.btn_export_status.Size = new System.Drawing.Size(301, 54);
             this.btn_export_status.TabIndex = 11;
             this.btn_export_status.Text = "Export job staus";
-            this.btn_export_status.UseVisualStyleBackColor = true;
+            this.btn_export_status.UseVisualStyleBackColor = false;
             this.btn_export_status.Click += new System.EventHandler(this.btn_export_status_Click);
             // 
             // lbl_parent
@@ -180,6 +203,7 @@
             // 
             // tbx_parent
             // 
+            this.tbx_parent.BackColor = System.Drawing.Color.White;
             this.tbx_parent.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbx_parent.Location = new System.Drawing.Point(129, 132);
             this.tbx_parent.Name = "tbx_parent";
@@ -231,7 +255,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(634, 461);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.ClientSize = new System.Drawing.Size(634, 431);
             this.Controls.Add(this.lbl_date);
             this.Controls.Add(this.lbl_date_stat);
             this.Controls.Add(this.lbl_step);
@@ -250,8 +275,10 @@
             this.Controls.Add(this.lbl_import_prompt);
             this.Controls.Add(this.btn_import);
             this.Controls.Add(this.rtb_import);
-            this.MaximumSize = new System.Drawing.Size(650, 500);
-            this.MinimumSize = new System.Drawing.Size(650, 500);
+            this.ForeColor = System.Drawing.Color.White;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximumSize = new System.Drawing.Size(650, 470);
+            this.MinimumSize = new System.Drawing.Size(650, 470);
             this.Name = "Main";
             this.Text = "StevesSuperSnowImporter";
             this.ResumeLayout(false);
