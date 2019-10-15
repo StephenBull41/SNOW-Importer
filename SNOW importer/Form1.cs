@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
-
+// to do: sort status output
 namespace SNOW_importer
 {
     public partial class Main : Form
@@ -28,6 +28,8 @@ namespace SNOW_importer
         {
 
             string[] import_arr = rtb_import.Lines;
+            string[] test = import_arr[0].Split('\t');
+
             int i = 0;
             foreach(string j in import_arr)
             {
@@ -41,23 +43,13 @@ namespace SNOW_importer
             {
                 if (job.Length > 1)
                 {
-
                     JJob jj = new JJob();
+                    string[] sjob = job.Split('\t'); //split by tabs(table fields)
 
-                    string id = job.Remove(0, 13).Remove(5); //site ID is always at the same index(start of buid)
-                    string job_c = job.Remove(0, 13);
-                    string buid = job_c.Remove(job_c.IndexOf('-', 8) + 8);//get the whole buid, needed for sb copy & paste
-                    string step = job.Split(' ')[job.Split(' ').Length -1];//wf step is always the last string, split by spaces & take the last
-                    string bu_d = job.Remove(0, job.IndexOf('/') - 2).Remove(9);
-                    //sometimes the exec ID doesn't split from the step, remove everything up to the last numeric char
-                    int idx = step.LastIndexOfAny(new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' });
-                    if(idx > 0) { step = step.Remove(0, idx + 1); }
-
-                    //add job info to array & loop
-                    jj.buid = buid;
-                    jj.site_id = id;
-                    jj.bu_date = bu_d;
-                    jj.step = step;
+                    jj.buid = sjob[2];
+                    jj.site_id = sjob[2].Remove(5);
+                    jj.bu_date = sjob[3];
+                    jj.step = sjob[7];
                     job_arr[i] = jj;
                     i++;
                 }
@@ -71,6 +63,7 @@ namespace SNOW_importer
             //write job list to a public var & call first site 
             jobs = job_arr;
             load_next();
+            
         }
 
         private void load_next()
@@ -132,7 +125,7 @@ namespace SNOW_importer
                 i++;
             }
             
-            File.WriteAllLines((export_path + "jobs_out.csv"), out_arr_jobs);
+            File.WriteAllLines((export_path + $"jobs_out_{DateTime.Today.ToString("yyyy-MM-dd") + "_" + DateTime.Now.Hour + DateTime.Now.Minute}.csv"), out_arr_jobs);
         }
 
         private void btn_export_status_Click(object sender, EventArgs e)
@@ -142,11 +135,23 @@ namespace SNOW_importer
             string[] out_arr_status = new string[jobs.Length + 1];
             int i = 0;
 
+            //put jobs that require attention at the top of the notes 
             foreach (JJob job in jobs)
             {
-                out_arr_status[i] = job.buid + " | " + job.status;
-                i++;
+                if (job.status == "Not posted")
+                { 
+                    out_arr_status[i] = job.status + " | " + job.buid;
+                    i++;
+                }
             }
+            foreach (JJob job in jobs)
+            {
+                if (job.status != "Not posted")
+                {
+                    out_arr_status[i] = job.status + " | " + job.buid;
+                    i++;
+                }
+            }            
 
             File.WriteAllLines((export_path + "status_out.txt"), out_arr_status);
             btn_export_status.Visible = false;

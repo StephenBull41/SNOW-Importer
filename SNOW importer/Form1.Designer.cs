@@ -50,9 +50,9 @@
             // 
             // rtb_import
             // 
-            this.rtb_import.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.rtb_import.BackColor = System.Drawing.Color.White;
             this.rtb_import.DetectUrls = false;
-            this.rtb_import.ForeColor = System.Drawing.SystemColors.Window;
+            this.rtb_import.ForeColor = System.Drawing.Color.Black;
             this.rtb_import.Location = new System.Drawing.Point(0, 95);
             this.rtb_import.Name = "rtb_import";
             this.rtb_import.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
@@ -63,7 +63,7 @@
             // 
             // btn_import
             // 
-            this.btn_import.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btn_import.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
             this.btn_import.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_import.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_import.Location = new System.Drawing.Point(12, 12);
@@ -85,7 +85,7 @@
             // 
             // btn_a_post
             // 
-            this.btn_a_post.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btn_a_post.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
             this.btn_a_post.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_a_post.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_a_post.Location = new System.Drawing.Point(12, 310);
@@ -98,7 +98,7 @@
             // 
             // btn_n_post
             // 
-            this.btn_n_post.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btn_n_post.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
             this.btn_n_post.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_n_post.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_n_post.Location = new System.Drawing.Point(421, 310);
@@ -111,7 +111,7 @@
             // 
             // btn_f_post
             // 
-            this.btn_f_post.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btn_f_post.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
             this.btn_f_post.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_f_post.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_f_post.Location = new System.Drawing.Point(216, 310);
@@ -154,7 +154,7 @@
             // 
             // btn_back
             // 
-            this.btn_back.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btn_back.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
             this.btn_back.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_back.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_back.Location = new System.Drawing.Point(488, 156);
@@ -167,7 +167,7 @@
             // 
             // btn_export
             // 
-            this.btn_export.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btn_export.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
             this.btn_export.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_export.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_export.Location = new System.Drawing.Point(12, 12);
@@ -180,7 +180,7 @@
             // 
             // btn_export_status
             // 
-            this.btn_export_status.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btn_export_status.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
             this.btn_export_status.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_export_status.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_export_status.Location = new System.Drawing.Point(321, 12);
@@ -255,7 +255,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(634, 431);
             this.Controls.Add(this.lbl_date);
             this.Controls.Add(this.lbl_date_stat);
