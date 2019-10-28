@@ -11,7 +11,6 @@ namespace SNOW_importer
         // create an array of job objects to hold info on each job imported
         public JJob[] jobs = new JJob[2];//length doesn't matter, it will be overwritten
 
-
         public Main()
         {
             InitializeComponent();
@@ -29,15 +28,8 @@ namespace SNOW_importer
         {
 
             string[] import_arr = rtb_import.Lines;
-
-            int i = 0;
-            foreach(string j in import_arr)
-            {
-                if (j.Length > 1) { i++; }
-            }
-            JJob[] job_arr = new JJob[i];
-
-            i = 0;
+            List<JJob> j_list = new List<JJob>();
+            
             rtb_import.Clear();
             foreach (string job in import_arr)
             {
@@ -50,8 +42,16 @@ namespace SNOW_importer
                     jj.site_id = sjob[2].Remove(5);
                     jj.bu_date = sjob[3];
                     jj.step = sjob[7];
-                    job_arr[i] = jj;
-                    i++;
+                    bool add = true;
+                    foreach(JJob j in j_list)
+                    {
+                        if(j.buid == jj.buid && j.bu_date == jj.bu_date) { add = false; }
+                    }
+                    if (add)
+                    {
+                        j_list.Add(jj);
+                    }
+                    
                 }
            
             }
@@ -61,7 +61,7 @@ namespace SNOW_importer
             btn_add_jobs.Visible = btn_back.Visible = lbl_step.Visible = lbl_step_stat.Visible = lbl_date.Visible = lbl_date_stat.Visible = btn_export.Visible = lbl_parent.Visible = tbx_parent.Visible = lbl_count.Visible = lbl_buid.Visible = lbl_site.Visible = btn_a_post.Visible = btn_f_post.Visible = btn_n_post.Visible = true;
 
             //write job list to a public var & call first site 
-            jobs = job_arr;
+            jobs = j_list.ToArray();
             load_next();
             
         }
