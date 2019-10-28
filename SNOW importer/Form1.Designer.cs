@@ -46,6 +46,7 @@
             this.lbl_step_stat = new System.Windows.Forms.Label();
             this.lbl_date = new System.Windows.Forms.Label();
             this.lbl_date_stat = new System.Windows.Forms.Label();
+            this.btn_add_jobs = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // rtb_import
@@ -251,12 +252,26 @@
             this.lbl_date_stat.TabIndex = 16;
             this.lbl_date_stat.Text = "Date:";
             // 
+            // btn_add_jobs
+            // 
+            this.btn_add_jobs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.btn_add_jobs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_add_jobs.Location = new System.Drawing.Point(23, 231);
+            this.btn_add_jobs.Name = "btn_add_jobs";
+            this.btn_add_jobs.Size = new System.Drawing.Size(100, 48);
+            this.btn_add_jobs.TabIndex = 18;
+            this.btn_add_jobs.Text = "Compare";
+            this.btn_add_jobs.UseVisualStyleBackColor = false;
+            this.btn_add_jobs.Visible = false;
+            this.btn_add_jobs.Click += new System.EventHandler(this.btn_add_jobs_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(634, 431);
+            this.Controls.Add(this.btn_add_jobs);
             this.Controls.Add(this.lbl_date);
             this.Controls.Add(this.lbl_date_stat);
             this.Controls.Add(this.lbl_step);
@@ -306,6 +321,7 @@
         private System.Windows.Forms.Label lbl_step_stat;
         private System.Windows.Forms.Label lbl_date;
         private System.Windows.Forms.Label lbl_date_stat;
+        private System.Windows.Forms.Button btn_add_jobs;
     }
 }
 

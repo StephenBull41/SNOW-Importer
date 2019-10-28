@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
+using System.Collections.Generic;
 // to do: sort status output
 namespace SNOW_importer
 {
@@ -28,7 +29,6 @@ namespace SNOW_importer
         {
 
             string[] import_arr = rtb_import.Lines;
-            string[] test = import_arr[0].Split('\t');
 
             int i = 0;
             foreach(string j in import_arr)
@@ -58,7 +58,7 @@ namespace SNOW_importer
 
             //hide import fields & show job info & export controls
             lbl_import_prompt.Visible = rtb_import.Visible = btn_import.Visible = false;
-            btn_back.Visible = lbl_step.Visible = lbl_step_stat.Visible = lbl_date.Visible = lbl_date_stat.Visible = btn_export.Visible = lbl_parent.Visible = tbx_parent.Visible = lbl_count.Visible = lbl_buid.Visible = lbl_site.Visible = btn_a_post.Visible = btn_f_post.Visible = btn_n_post.Visible = true;
+            btn_add_jobs.Visible = btn_back.Visible = lbl_step.Visible = lbl_step_stat.Visible = lbl_date.Visible = lbl_date_stat.Visible = btn_export.Visible = lbl_parent.Visible = tbx_parent.Visible = lbl_count.Visible = lbl_buid.Visible = lbl_site.Visible = btn_a_post.Visible = btn_f_post.Visible = btn_n_post.Visible = true;
 
             //write job list to a public var & call first site 
             jobs = job_arr;
@@ -69,18 +69,36 @@ namespace SNOW_importer
         private void load_next()
         {
             //cyles through all jobs, copies BUID to clipboard & gives info on what job failed in sb
-            if(site_index < jobs.Length)
+
+            if (site_index < jobs.Length)
             {
-                lbl_buid.Text = jobs[site_index].buid;
-                lbl_count.Text = (site_index + 1) + "/" + jobs.Length;
-                lbl_date.Text = jobs[site_index].bu_date;
-                lbl_step.Text = jobs[site_index].step;
-                Clipboard.SetText(jobs[site_index].buid);
-                site_index++;
+                if (jobs[site_index].check == true)
+                {
+                    lbl_buid.Text = jobs[site_index].buid;
+                    lbl_count.Text = (site_index + 1) + "/" + jobs.Length;
+                    lbl_date.Text = jobs[site_index].bu_date;
+                    lbl_step.Text = jobs[site_index].step;
+                    Clipboard.SetText(jobs[site_index].buid);
+                    site_index++;
+                }
+                else
+                {
+                    site_index++;
+                    load_next();
+                    return;
+                }
+
             }
             else
             {
                 btn_export_status.Visible = true;
+                lbl_buid.Text = "";
+                lbl_count.Text = "";
+                lbl_date.Text = "";
+                lbl_step.Text = "";
+                btn_a_post.Visible = false;
+                btn_f_post.Visible = false;
+                btn_n_post.Visible = false;
             }
         }
 
@@ -114,46 +132,51 @@ namespace SNOW_importer
         private void export_jobs(string parent)
         {
             string export_path = System.Reflection.Assembly.GetEntryAssembly().Location.Remove(System.Reflection.Assembly.GetEntryAssembly().Location.LastIndexOf("\\") + 1);
-            string[] out_arr_jobs = new string[jobs.Length + 1];
-            int i = 1;
-            //only parent & site is needed, everything else is inherited in SNOW from the parent
-            out_arr_jobs[0] = "Parent Ticket,Site ID";
 
-            foreach(JJob job in jobs)
+            List<string> ex_lst = new List<string>();
+            foreach(JJob j in jobs)
             {
-                out_arr_jobs[i] = $"{parent},{job.site_id}";
+                if(j.check == true)
+                {
+                    ex_lst.Add(parent + "," + j.site_id);
+                }
+            }
+            string[] temp_arr = ex_lst.ToArray();
+            string[] out_arr_jobs = new string[temp_arr.Length + 1];
+            out_arr_jobs[0] = "Parent,SiteID";
+            int i = 1;
+            foreach(string line in temp_arr)
+            {
+                out_arr_jobs[i] = line;
                 i++;
             }
             
-            File.WriteAllLines((export_path + $"jobs_out_{DateTime.Today.ToString("yyyy-MM-dd") + "_" + DateTime.Now.Hour + DateTime.Now.Minute}.csv"), out_arr_jobs);
+            File.WriteAllLines((export_path + $"jobs_out_{DateTime.Today.ToString("yyyy-MM-dd") + "_" + DateTime.Now.Hour + "." + DateTime.Now.Minute}.csv"), out_arr_jobs);
         }
 
         private void btn_export_status_Click(object sender, EventArgs e)
         {
             //export of what jobs were marked as, to be put in parent ticket notes manually & used for the operator to know what sites still need action
             string export_path = System.Reflection.Assembly.GetEntryAssembly().Location.Remove(System.Reflection.Assembly.GetEntryAssembly().Location.LastIndexOf("\\") + 1);
-            string[] out_arr_status = new string[jobs.Length + 1];
-            int i = 0;
+            
+            List<string> ex_lst = new List<string>();
 
             //put jobs that require attention at the top of the notes 
             foreach (JJob job in jobs)
             {
-                if (job.status == "Not posted")
+                if (job.status == "Not posted" && job.check == true)
                 { 
-                    out_arr_status[i] = job.status + " | " + job.buid;
-                    i++;
+                    ex_lst.Add(job.status + "," + job.buid + "," + job.bu_date);
                 }
             }
             foreach (JJob job in jobs)
             {
-                if (job.status != "Not posted")
+                if (job.status != "Not posted" && job.check == true)
                 {
-                    out_arr_status[i] = job.status + " | " + job.buid;
-                    i++;
+                    ex_lst.Add(job.status + "," + job.buid + "," + job.bu_date);
                 }
-            }            
-
-            File.WriteAllLines((export_path + "status_out.txt"), out_arr_status);
+            }
+            File.WriteAllLines((export_path + $"status_out_{DateTime.Today.ToString("yyyy - MM - dd") + "_" + DateTime.Now.Hour + "." + DateTime.Now.Minute}.txt"), ex_lst.ToArray());
             btn_export_status.Visible = false;
         }
 
@@ -191,7 +214,36 @@ namespace SNOW_importer
                 btn_export.Text = "Export SNOW import list";
             }
         }
+
+        private void btn_add_jobs_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.InitialDirectory = System.Reflection.Assembly.GetEntryAssembly().Location.Remove(System.Reflection.Assembly.GetEntryAssembly().Location.LastIndexOf("\\") + 1);
+            ofd.Filter = "text files (*.txt)|*.txt";
+
+            if(ofd.ShowDialog() == DialogResult.OK)
+            {
+                int i = 0;
+                string[] done_jobs = File.ReadAllLines(ofd.FileName);
+                foreach(JJob j in jobs)
+                {
+                    foreach(string dj in done_jobs)
+                    {
+                        if(dj.Contains(",") && j.buid == dj.Split(',')[1] && j.bu_date == dj.Split(',')[2])
+                        {
+                            jobs[i].check = false;
+                        }
+                    }
+                    i++;
+                }
+                site_index = 0; //reset to first job
+                load_next();
+            }
+
+
+        }
     }   
+
 }
 
 public class JJob
@@ -201,4 +253,5 @@ public class JJob
     public string status = string.Empty;
     public string bu_date = string.Empty;
     public string step = string.Empty;
+    public bool check = true;
 }
